@@ -86,10 +86,10 @@ def test_package_versions() -> bool:
             module = __import__(import_name)
             version = getattr(module, "__version__", "unknown")
             checkmark = f"{Colors.GREEN}✓{Colors.END}"
-            print(f"{checkmark} {display_name:20s} {Colors.YELLOW}{version}{Colors.END}")
+            print(f"{checkmark} {display_name:18s} {Colors.YELLOW}{version}{Colors.END}")
         except ImportError:
             cross = f"{Colors.RED}✗{Colors.END}"
-            print(f"{cross} {display_name:20s} {Colors.RED}NOT INSTALLED{Colors.END}")
+            print(f"{cross} {display_name:18s} {Colors.RED}NOT INSTALLED{Colors.END}")
             return False
 
     return True
