@@ -1,11 +1,10 @@
-#!/usr/bin/env python
-# ---------------------------------------------------------------------
-#  File: test-python/test_python.py
+# ------------------------------------------------------------------------------
+#  Filename: test_python.py
 #
 #  Purpose: A sanity check for Python installations and package dependencies.
 #
 #  Copyright (C) 2025 Logan Kaising.  All rights reserved.
-# ---------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 from __future__ import annotations
 
