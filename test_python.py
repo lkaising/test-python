@@ -2,11 +2,11 @@
 """
 Python Environment Verification Script
 =======================================
-A minimal sanity check for Python installations and package dependencies.
+A sanity check for Python installations and package dependencies.
 
 Author: Logan Kaising
 License: Apache-2.0
-Python: 3.11+
+Python: 3.11.13
 """
 
 from __future__ import annotations
@@ -22,21 +22,18 @@ warnings.filterwarnings("ignore")
 class Colors:
     """ANSI color codes for terminal output."""
     
-    HEADER = "\033[95m"
     BLUE = "\033[94m"
     CYAN = "\033[96m"
     GREEN = "\033[92m"
     YELLOW = "\033[93m"
     RED = "\033[91m"
     BOLD = "\033[1m"
-    UNDERLINE = "\033[4m"
     END = "\033[0m"
 
     @classmethod
     def disable(cls) -> None:
         """Disable colors for non-TTY environments."""
-        cls.HEADER = cls.BLUE = cls.CYAN = cls.GREEN = ""
-        cls.YELLOW = cls.RED = cls.BOLD = cls.UNDERLINE = cls.END = ""
+        cls.BLUE = cls.CYAN = cls.GREEN = cls.YELLOW = cls.RED = cls.BOLD = cls.END = ""
 
 
 if not sys.stdout.isatty():
