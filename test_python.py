@@ -1,13 +1,11 @@
 #!/usr/bin/env python
-"""
-Python Environment Verification Script
-=======================================
-A sanity check for Python installations and package dependencies.
-
-Author: Logan Kaising
-License: Apache-2.0
-Python: 3.11.13
-"""
+# ---------------------------------------------------------------------
+#  File: test-python/test_python.py
+#
+#  Purpose: A sanity check for Python installations and package dependencies.
+#
+#  Copyright (C) 2025 Logan Kaising.  All rights reserved.
+# ---------------------------------------------------------------------
 
 from __future__ import annotations
 
@@ -21,7 +19,7 @@ warnings.filterwarnings("ignore")
 
 class Colors:
     """ANSI color codes for terminal output."""
-    
+
     BLUE = "\033[94m"
     CYAN = "\033[96m"
     GREEN = "\033[92m"
@@ -44,7 +42,7 @@ def print_section(title: str, *, style: Literal["header", "success"] = "header")
     """Print a section header."""
     width = 70
     border = "═" * width
-    
+
     if style == "success":
         print(f"\n{Colors.GREEN}{Colors.BOLD}{border}")
         print(f"{title:^{width}}")
@@ -58,14 +56,14 @@ def print_section(title: str, *, style: Literal["header", "success"] = "header")
 def test_environment() -> None:
     """Display environment information."""
     print_section("ENVIRONMENT INFO")
-    
+
     info = {
         "Python version": sys.version.split()[0],
         "Python executable": sys.executable,
         "Platform": platform.platform(),
         "Architecture": platform.machine(),
     }
-    
+
     for key, value in info.items():
         print(f"{Colors.BOLD}{key:20s}{Colors.END} {Colors.BLUE}{value}{Colors.END}")
 
@@ -73,7 +71,7 @@ def test_environment() -> None:
 def test_package_versions() -> bool:
     """Test package imports and display versions."""
     print_section("PACKAGE VERSIONS")
-    
+
     packages = {
         "numpy": "numpy",
         "opencv-python": "cv2",
@@ -82,7 +80,7 @@ def test_package_versions() -> bool:
         "matplotlib": "matplotlib",
         "pillow": "PIL",
     }
-    
+
     for display_name, import_name in packages.items():
         try:
             module = __import__(import_name)
@@ -101,14 +99,14 @@ def main() -> bool:
     """Run all verification tests."""
     try:
         test_environment()
-        
+
         if not test_package_versions():
             print(f"\n{Colors.RED}{Colors.BOLD}✗ FAILED:{Colors.END} Some packages are not installed")
             return False
-        
+
         print_section("ALL TESTS PASSED", style="success")
         return True
-        
+
     except Exception as e:
         print(f"\n{Colors.RED}{Colors.BOLD}✗ TEST FAILED:{Colors.END} {e}")
         import traceback
